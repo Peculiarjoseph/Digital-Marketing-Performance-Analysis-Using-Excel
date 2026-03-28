@@ -2,7 +2,27 @@
 
 <img width="836" height="455" alt="Screenshot 2026-03-28 001153" src="https://github.com/user-attachments/assets/d639ce25-acec-4b1b-ab40-ddf2a9f0a4c8" />
 
-## 1: Business Problem Definition
+## Table Of Contents
+[Business Problem Definiton](#business-problem-definition)
+
+[Dashboard Wireframing](#dashboard-wireframing)
+
+[Data Import And Cleaning](#data-import-and-cleaning)
+
+[Feature Engineering And Data Modelling](#feature-engineering-and-data-modelling)
+
+[KPIs](#kpis)
+
+[Answering Business Questions](#answering-business-questions)
+
+[Dashboard Development](#dashboard-development)
+
+[Executive Summary And Insights](#executive-summary-and-insights)
+
+[Strategic Recommendations for Performance Optimization](#strategic-recommendations-for-performance-optimization)
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+## Business Problem Definition
 ### Before touching the data, the following business questions were defined:
 How much was spent on digital campaigns in 2023 and what value did they generate?
 
@@ -18,7 +38,8 @@ Which optimisation levers (channel, device, geography) can improve efficiency?
 
 These questions guided metric selection, modelling, and visual design.
 
-## 2: Dashboard Wireframing (PowerPoint)
+------------------------------------------------------------------------------------------------------------------------------------------------
+## Dashboard Wireframing
 Before analysis, a low-fidelity wireframe was created in PowerPoint to define:
 Page 1 – Performance Overview
 KPI cards (Spend, Conversions, Conversion Value, ROAS, CPA)
@@ -48,8 +69,8 @@ City-level ROAS comparison
 
 This step ensured the analysis stayed focused and business-driven.
 
-
-## 3: Data Import & Cleaning (Power Query)
+------------------------------------------------------------------------------------------------------------------------------------------------
+## Data Import And Cleaning 
 Import Process
 Dataset imported into Excel Power Query
 
@@ -67,7 +88,7 @@ Conversions, Impressions, Clicks → Whole number
 Campaign Group, Channel, Device, City → Text
 
 
-## Date Issue Resolution
+### Date Issue Resolution
 The dataset contained mixed date formats:
 03/01/2023
 
@@ -88,7 +109,10 @@ Date type was enforced in Power Query using Locale-aware parsing
 Final format:
  dd-MM-yyyy
 
-## 4: Calendar Table Creation (Power Pivot)
+------------------------------------------------------------------------------------------------------------------------------------------------
+## Feature Engineering And Data Modelling
+
+### Calendar Table Creation (Power Pivot)
 A dedicated Calendar (Date) table was created to enable time intelligence.
 Calendar Table Fields
 Date
@@ -106,7 +130,7 @@ Month Number
 Year-Month
 
 
-## Relationship Modeling
+### Relationship Modeling
 Calendar[Date] → FactTable[Date]
 
 
@@ -118,7 +142,10 @@ Calendar table marked as Date Table
 
 This enabled MoM calculations and proper sorting by month number.
 
-## 5: KPI Calculations (DAX)
+-----------------------------------------------------------------------------------------------------------------------------------------------
+## KPIS
+### (DAX)
+
 Total Spend
 ```Total Spend = SUM(FactTable[Spend])```
 
@@ -150,7 +177,7 @@ These were handled logically and excluded from averages
 
 
 
-## 6: Month-on-Month (MoM) Calculations
+### Month-on-Month (MoM) Calculations
 Previous Month Spend
 ``PM Spend =
 CALCULATE(
@@ -198,9 +225,9 @@ ROAS
 
 CPA
 
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
-
-## 7: Answering Business Questions (Pivot Tables)
+## Answering Business Questions
 Pivot tables were used to answer each question:
 Campaign Group × ROAS
 
@@ -219,10 +246,9 @@ Monthly trends (using Calendar table)
 
 Conditional formatting was applied to highlight performance differences, not raw volume.
 
-## 8: Dashboard Development (Excel)
+-----------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
+## Dashboard Development 
 
 
 
@@ -232,7 +258,8 @@ Conditional formatting was applied to highlight performance differences, not raw
 
 <img width="1139" height="510" alt="Screenshot 2026-03-28 001217" src="https://github.com/user-attachments/assets/f02c7ed1-ffc8-456e-9c69-8f3ca8c86833" />
 
-## 9 Executive Summary: 2023 Digital Campaign Performance
+-----------------------------------------------------------------------------------------------------------------------------------------------
+## Executive Summary And Insights
 
 Report Period: January – December 2023
 
@@ -240,7 +267,7 @@ Report Period: January – December 2023
 Overall, the digital marketing accounts maintained high health and efficiency throughout 2023. With a total spend of £163,181.00, the campaigns generated £1,731,700.26 in conversion value, resulting in an annual ROAS of £10.61. Most importantly, the account demonstrated "efficient scaling"—a 6.78% increase in spend was met with a 7.85% increase in conversions, indicating that the target audience is not yet saturated.
 ### Key Performance Insights
 
-## 1. Seasonal Efficiency Disparity
+### 1. Seasonal Efficiency Disparity
 
 While the Fall campaign group drove the highest volume (representing roughly 48% of total spend), it was the least efficient segment.
 
@@ -250,7 +277,7 @@ While the Fall campaign group drove the highest volume (representing roughly 48%
 
   Insight: The current strategy over-indexes on high-volume, lower-efficiency periods. There is significant "headroom" to scale the Summer and Spring segments where the return on investment is substantially higher.
 
-## 2. Regional Performance (The "Birmingham" Opportunity)
+### 2. Regional Performance (The "Birmingham" Opportunity)
 
 Geographic data reveals a stark contrast in efficiency across the UK.
 
@@ -260,15 +287,16 @@ Geographic data reveals a stark contrast in efficiency across the UK.
 
   Insight: We are paying a premium for conversions in London. Reallocating a portion of the London budget to Birmingham and Manchester could lower the aggregate CPA.
 
-## 3. Channel & Device Drivers
+### 3. Channel & Device Drivers
 
   Channel Effectiveness: Pinterest is the most consistent driver of effectiveness across all campaign groups (Spring, Summer, and Fall). Facebook remains the weakest direct-conversion channel.
 
   Device Preference: Desktop consistently outperforms Mobile. This suggests that while customers may browse on mobile, the final high-value conversion is happening on larger screens.
+  
+-----------------------------------------------------------------------------------------------------------------------------------------------
+## Strategic Recommendations for Performance Optimization
 
-## 10 : Strategic Recommendations for Performance Optimization
-
-## 1. Seasonal Budget Rebalancing
+### 1. Seasonal Budget Rebalancing
 
 The current allocation is heavily weighted toward the "Fall" campaign group, which yields the lowest ROAS (£9.45). Conversely, the "Summer" group is significantly underfunded despite being the most efficient (£14.10 ROAS).
 
@@ -276,7 +304,7 @@ Action: Reallocate 15% of the Fall budget to Summer and Spring evergreen segment
 
 Objective: Maximize the higher marginal return found in these efficient periods to increase the total annual conversion value without increasing the top-line budget.
 
-## 2. Regional Bid Refinement (The Birmingham Pivot)
+### 2. Regional Bid Refinement (The Birmingham Pivot)
 
 Data shows a massive efficiency gap between major cities. Birmingham delivers a ROAS of £13.94, while London—despite contributing 31% of the total value—operates at a much lower £7.98 ROAS.
 
@@ -284,7 +312,7 @@ Action: Implement a +20% bid adjustment for Birmingham and Manchester to capture
 
 Objective: Normalize efficiency across regions and reduce "wasted" spend in the more expensive London market.
 
-## 3. Pinterest-Driven Creative Strategy
+### 3. Pinterest-Driven Creative Strategy
 
 Pinterest is the standout performer for "Channel Effectiveness" across all seasons. This suggests the visual style or messaging on Pinterest is resonating most with the target audience.
 
@@ -292,7 +320,7 @@ Action: Conduct a creative audit of the top-performing Pinterest assets. Adapt t
 
 Objective: Bridge the effectiveness gap on Meta platforms by utilizing proven creative winners from Pinterest.
 
-## 4. Technical UX Audit for Mobile Conversion
+### 4. Technical UX Audit for Mobile Conversion
 
 There is a consistent performance gap between Desktop and Mobile users. While Mobile often serves as a discovery tool, the significantly higher ROAS on Desktop suggests friction in the mobile purchase journey.
 
@@ -300,7 +328,7 @@ Action: Launch a technical audit focused on Mobile Site Speed and the Checkout F
 
 Objective: Close the efficiency gap between devices and improve the overall mobile conversion rate.
 
-## 5. Post-Peak Retention & December Recovery
+### 5. Post-Peak Retention & December Recovery
 
 The sharp decline in conversions in December (1,321) compared to the October/November peak (~4,600) suggests a major seasonal drop-off or audience exhaustion.
 
